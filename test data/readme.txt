@@ -1,0 +1,1 @@
+Aqui temos os arquivos para análise (caso não use uma câmera para captura em tempo real)
