@@ -1,4 +1,4 @@
-test data/*[.mp4,.avi,.jpg,.png]
+test_data/*[.mp4,.avi,.jpg,.png]
 output.mp4
-rede pre treinada/*[.weights,.cfg,.names]
-rede customizada/*[.weights,.cfg,.names]
+rede_pre_treinada/*[.weights,.cfg,.names]
+rede_customizada/*[.weights,.cfg,.names]

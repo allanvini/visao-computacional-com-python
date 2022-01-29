@@ -4,7 +4,7 @@ import threading
 import requests
 
 # Carrega o conteudo para análise (pode ser uma câmera ou um vídeo em um arquivo)
-cap = cv2.VideoCapture('test data/camera.mp4');
+cap = cv2.VideoCapture('test_data/camera.mp4');
 
 #Identifica a resolução do vídeo (será usado para definir a resolução da saída)
 vwidth = int(cap.get(cv2.CAP_PROP_FRAME_WIDTH) + 0.5)
@@ -16,7 +16,7 @@ fourcc = cv2.VideoWriter_fourcc(*'MP4V')
 out = cv2.VideoWriter('output.mp4', fourcc, 30.0, size)
 
 # Seleciona o modelo que será usado na detecção
-net = cv2.dnn.readNet('rede pre treinada/yolov4.weights', 'rede pre treinada/yolov4.cfg')
+net = cv2.dnn.readNet('rede_pre_treinada/yolov4.weights', 'rede_pre_treinada/yolov4.cfg')
 
 model = cv2.dnn_DetectionModel(net)
 model.setInputParams(size=(416,416), scale=1/255)
