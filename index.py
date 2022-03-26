@@ -57,7 +57,7 @@ while (cap.isOpened()):
     #Realiza o scan no quadro
     classes, scores, boxes = model.detect(frame, 0.1, 0.2)
 
-    #variavel contadora de detecções
+    #Variavel contadora de detecções
     counter = 0
 
     #Percorre as detecções feitas no quadro
@@ -74,10 +74,10 @@ while (cap.isOpened()):
 
             cv2.putText(frame, f"{str(round((score*100), 1))}%", (box[0], box[1] - 10), cv2.FONT_HERSHEY_PLAIN, 1, (0,255,255), 2)
     
-    #seta a contagem na variavel global
+    #Seta a contagem na variavel global
     vehicleCounter = counter
 
-    # Imprime no frame a contagem de veículos
+    #Imprime no frame a contagem de veículos
     vehicle_label = f"Veiculos: {vehicleCounter}"
     cv2.rectangle(frame, (0,0), (100,25), (0,0,0), -1)
     cv2.putText(frame, vehicle_label, (0,15), cv2.FONT_HERSHEY_PLAIN, 1, (0,255,255), 2)
