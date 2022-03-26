@@ -70,14 +70,17 @@ while (cap.isOpened()):
             cv2.rectangle(frame, box, color, 1)
 
             #Escreve acima da box a precisão da detecção
-            cv2.putText(frame, f"{str(round((score*100), 1))}%", (box[0], box[1] - 10), cv2.FONT_HERSHEY_SIMPLEX, .5, (0,255,255), 2)
+            cv2.rectangle(frame, (box[0]-10, box[1]-25, 75, 25), (0,0,0), -1)
+
+            cv2.putText(frame, f"{str(round((score*100), 1))}%", (box[0], box[1] - 10), cv2.FONT_HERSHEY_PLAIN, 1, (0,255,255), 2)
     
     #seta a contagem na variavel global
     vehicleCounter = counter
 
     # Imprime no frame a contagem de veículos
     vehicle_label = f"Veiculos: {vehicleCounter}"
-    cv2.putText(frame, vehicle_label, (500,125), cv2.FONT_HERSHEY_SIMPLEX, 1, (0,255,255), 2)
+    cv2.rectangle(frame, (0,0), (100,25), (0,0,0), -1)
+    cv2.putText(frame, vehicle_label, (0,15), cv2.FONT_HERSHEY_PLAIN, 1, (0,255,255), 2)
 
     #Grava o quadro no vídeo de saída
     out.write(frame)
