@@ -50,12 +50,17 @@ def set_interval(func, sec):
 
 # Loop para percorrer os quadros
 while (cap.isOpened()):
+    #inicia a contagem do tempo do quadro
+    start = time.time()
 
     #Captura o quadro
     _, frame = cap.read()
 
     #Realiza o scan no quadro
     classes, scores, boxes = model.detect(frame, 0.1, 0.2)
+
+    #fecha a contagem do tempo do quadro
+    end = time.time()
 
     #Variavel contadora de detecções
     counter = 0
@@ -79,9 +84,14 @@ while (cap.isOpened()):
 
     #Imprime no frame a contagem de veículos
     vehicle_label = f"Veiculos: {vehicleCounter}"
-    cv2.rectangle(frame, (0,0), (100,25), (0,0,0), -1)
+    cv2.rectangle(frame, (0,0), (110,25), (0,0,0), -1)
     cv2.putText(frame, vehicle_label, (0,15), cv2.FONT_HERSHEY_PLAIN, 1, (0,255,255), 2)
 
+    #imprime no frame o FPS
+    fps = f"FPS: {round((1.0/(end - start)), 2)}"
+    cv2.rectangle(frame, (0,50), (110,25), (0,0,0), -1)
+    cv2.putText(frame, fps, (0,45), cv2.FONT_HERSHEY_PLAIN, 1, (0,255,255), 2)
+    
     #Grava o quadro no vídeo de saída
     out.write(frame)
 
